@@ -1,0 +1,41 @@
+<section>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name and surname</th>
+        <th>Username</th>
+        <th>E-mail address</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.username }}</td>
+        <td><a href="mailto:{{ student.email }}">{{ student.email }}</a></td>
+        <td>
+          <a routerLink="/student/{{student.id}}" class="button button-green">Edit</a>
+          <button class="button button-red" (click)="deleteStudent(student)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Add a new student</h2>
+
+  <label for="name">First name and last name</label>
+  <input type="text" id="name" #name />
+
+  <label for="email">E-mail address</label>
+  <input type="text" id="email" #email />
+
+  <label for="uname">Username</label>
+  <input type="text" id="uname" #uname />
+
+  <button (click)="add(name.value, email.value, uname.value); name.value = ''; email.value = ''; uname.value = ''">
+    Add Student
+  </button>
+
+</section>
