@@ -1,0 +1,21 @@
+<p>Hello from {{ name }}</p>
+
+<img [src]="imageSrc" [alt]="imageAlt">
+
+<button (click)="printSomething()">Display</button>
+
+<h1 [style.color]="color">Title</h1>
+<br>
+<input type="text" [(ngModel)]="firstName">
+
+<br>
+
+<div *ngIf="show">Lorem ipsum lorem ipsum</div>
+
+<ul>
+  <li *ngFor="let post of postsContainer">
+    {{ post.id}} - {{post.title}}
+  </li>
+</ul>
+
+<p [ngClass]="{'first-class':true, 'second-class': true}">Boom 💥</p>
