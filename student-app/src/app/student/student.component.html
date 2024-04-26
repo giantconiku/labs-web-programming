@@ -1,4 +1,14 @@
 <section>
+  <p>Date today: {{ date | date: 'fullDate' }}</p> + {{childText}}
+  <p>Date today: {{ date | date: 'short' }}</p>
+  <p>Square root of number 64: {{ 64 | sqrt }}</p>
+
+  <app-child
+    [dateCh]="date"
+    [showCh]="showP"
+    (eventEmitter)="notifyParent($event)">
+  </app-child>
+
   <table>
     <thead>
       <tr>
@@ -11,9 +21,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let student of students">
-        <td>{{ student.id }}</td>
-        <td>{{ student.name }}</td>
-        <td>{{ student.username }}</td>
+        <td>{{ student.id | currency: 'USD' }}</td>
+        <td>{{ student.name | uppercase }}</td>
+        <td>{{ student.username | lowercase }}</td>
         <td><a href="mailto:{{ student.email }}">{{ student.email }}</a></td>
         <td>
           <a routerLink="/student/{{student.id}}" class="button button-green">Edit</a>

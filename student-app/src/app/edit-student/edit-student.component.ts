@@ -11,7 +11,7 @@ import { Location } from "@angular/common";
 })
 export class EditStudentComponent {
 
-  student!:Student;
+  student!: Student;
 
   constructor(private activatedRoute: ActivatedRoute,
               private studentService: StudentService,
@@ -19,18 +19,18 @@ export class EditStudentComponent {
     this.getStudent();
   }
 
-  getStudent() : void {
+  getStudent(): void {
     // @ts-ignore
-    const id : number = +(this.activatedRoute.snapshot.paramMap.get('id'));
+    const id: number = +(this.activatedRoute.snapshot.paramMap.get('id'));
     this.studentService.getStudent(id)
-      .subscribe(resp => this.student = resp)
+      .subscribe(resp => this.student = resp);
   }
 
-  goBack() : void {
+  goBack(): void {
     this.location.back()
   }
 
-  save() : void {
+  save(): void {
     this.studentService.editStudent(this.student)
       .subscribe(() => this.goBack())
   }

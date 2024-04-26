@@ -1,0 +1,43 @@
+<form [formGroup]="contactForm" (ngSubmit)="sendData()">
+
+  <p>
+    <label for="firstName">First Name </label>
+    <input type="text" id="firstName" name="firstName" formControlName="firstName">
+  </p>
+
+  <p>
+    <label for="lastName">Last Name </label>
+    <input type="text" id="lastName" name="lastName" formControlName="lastName">
+  </p>
+
+  <p>
+    <label for="email">Email </label>
+    <input type="text" id="email" name="email" formControlName="email">
+  </p>
+
+  <p>
+    <label for="gender">Geneder </label>
+    <input type="radio" value="male" id="gender" name="gender" formControlName="gender"> Male
+    <input type="radio" value="female" id="gender" name="gender" formControlName="gender"> Female
+  </p>
+
+  <p>
+    <label for="isMarried">Married </label>
+    <input type="checkbox" id="isMarried" name="isMarried" formControlName="isMarried">
+  </p>
+
+  <p>
+    <label for="country">country </label>
+    <select id="country" name="country" formControlName="country">
+      <option value="1">India</option>
+      <option value="2">USA</option>
+      <option value="3">England</option>
+      <option value="4">Singapore</option>
+    </select>
+  </p>
+
+  <p>
+    <button type="submit" [disabled]="!contactForm.valid">Submit</button>
+  </p>
+
+</form>

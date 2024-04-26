@@ -9,6 +9,10 @@ import { Student } from '../models/student.interface';
 })
 export class StudentComponent {
 
+  date: Date = new Date();
+  childText!: string;
+  showP: boolean = false;
+
   students!: Student[];
 
   constructor(private studentService: StudentService) {
@@ -16,7 +20,11 @@ export class StudentComponent {
       (resp: Student[]) => this.students = resp)
   }
 
-  add(name: string, email: string, uname: string) {
+  notifyParent(value: any): void {
+    this.childText = value;
+  }
+
+  add(name: string, email: string, uname: string): void {
     // Removal of whitespace from the data
     name = name.trim();
     email = email.trim();
@@ -40,19 +48,19 @@ export class StudentComponent {
 
     // Upload data to server and update local table
     this.studentService.addStudent(student)
-      .subscribe((student : Student) : void => {
+      .subscribe((student: Student): void => {
       this.students.push(student);
     });
   }
 
-  getStudents() : void {
-    this.studentService.getStudents().subscribe((students : Student[]) : void => {
+  getStudents(): void {
+    this.studentService.getStudents().subscribe((students: Student[]): void => {
       this.students = students;
     });
   }
 
-  deleteStudent(student: Student) : void {
-    this.students = this.students.filter((s : Student) : boolean => s !== student);
+  deleteStudent(student: Student): void {
+    this.students = this.students.filter((s: Student): boolean => s !== student);
     this.studentService.deleteStudent(student).subscribe();
   }
 }
